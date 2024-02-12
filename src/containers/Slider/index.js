@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { useData } from "../../contexts/DataContext";
 import { getMonth } from "../../helpers/Date";
 
@@ -7,20 +7,20 @@ import "./style.scss";
 const Slider = () => {
   const { data } = useData();
   const [index, setIndex] = useState(0);
-  const currentIndexRef = useRef(index);
 
   const byDateDesc = data?.focus.sort((evtA, evtB) =>
     new Date(evtA.date) < new Date(evtB.date) ? -1 : 1
-  );
+  ) || [];
+
+
   const nextCard = () => {
-    setTimeout(() => {
-      if (byDateDesc && byDateDesc.length > 0) {
-        const nextIndex = (currentIndexRef.current + 1) % byDateDesc.length;
-        setIndex(nextIndex);
-        currentIndexRef.current = nextIndex;
-      }
-    }, 5000);
+    console.log(byDateDesc)
+    setTimeout(
+      () => setIndex(index < byDateDesc.length - 1 ? index + 1 : 0),
+      5000
+    );
   };
+
   useEffect(() => {
     nextCard();
   })
@@ -52,7 +52,7 @@ const Slider = () => {
               key={`inputPagination-${event.title}`}
               type="radio"
               name="radio-button"
-              checked={currentIndexRef.current === radioIdx}
+              checked={index === radioIdx}
               readOnly
             />
           ))}

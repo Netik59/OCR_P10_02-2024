@@ -16,6 +16,7 @@ const Form = ({ onSuccess, onError }) => {
       try {
         await mockContactApi();
         setSending(false);
+        onSuccess();
       } catch (err) {
         setSending(false);
         onError(err);
@@ -23,6 +24,7 @@ const Form = ({ onSuccess, onError }) => {
     },
     [onSuccess, onError]
   );
+
   return (
     <form onSubmit={sendContact}>
       <div className="row">
@@ -47,6 +49,7 @@ const Form = ({ onSuccess, onError }) => {
             label="Message"
             type={FIELD_TYPES.TEXTAREA}
           />
+
         </div>
       </div>
     </form>
