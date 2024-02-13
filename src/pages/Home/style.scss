@@ -83,6 +83,14 @@ main {
     margin-top: 32px;
   }
 }
+.noSpaceAround {
+  width: 90%;
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 64px;
+  margin-bottom: 64px;
+}
 .ListContainer {
   width: 90%;
   max-width: 1200px;

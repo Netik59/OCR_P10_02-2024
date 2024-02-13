@@ -14,7 +14,6 @@ const Slider = () => {
 
 
   const nextCard = () => {
-    console.log(byDateDesc)
     setTimeout(
       () => setIndex(index < byDateDesc.length - 1 ? index + 1 : 0),
       5000
