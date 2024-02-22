@@ -126,8 +126,8 @@ const Page = () => {
         </Modal>
       </div>
     </main>
-    <footer className="row">
-      <div className="col presta">
+    <footer data-testid="footer" className="row">
+      <div className="col presta" data-testid="last-event">
         <h3>Notre derniére prestation</h3>
         <Modal Content={<ModalEvent event={last} />}>
           {({ setIsOpened }) => (
